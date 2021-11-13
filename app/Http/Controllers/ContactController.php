@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Models\Contact;
+
+ class ContactController extends Controller
+{
+    public function save(Request $request){
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required'
+        ]);
+
+        $contact =new Contact;
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->message = $request->input('message');
+        
+        $contact->save();
+           
+        return back()->with('success','We have recieved it');
+       
+
+    }
+    public function get(Request $request){
+
+
+    }
+    
+}
