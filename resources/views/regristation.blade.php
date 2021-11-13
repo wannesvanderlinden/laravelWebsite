@@ -24,6 +24,10 @@
                   <textarea name="name" id="name" cols="30" rows="1"  class="form-control form-control-lg"></textarea>
                   <label class="form-label" for="name">Your Name</label>
                 </div>
+                <div class="form-outline mb-4">
+                  <textarea name="username" id="username" cols="30" rows="1"  class="form-control form-control-lg"></textarea>
+                  <label class="form-label" for="username">username</label>
+                </div>
 
                 <div class="form-outline mb-4">
                  
