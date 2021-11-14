@@ -19,6 +19,7 @@ class LoginController extends Controller
         $userInLog = $request->only('email', 'password');
 
         if (Auth::attempt($userInLog)) {
+           // Auth::login($user, true);
             // Authentication passed...
             return redirect()->intended('welcome');
         }
