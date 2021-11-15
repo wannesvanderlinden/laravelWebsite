@@ -8,20 +8,9 @@
 </head>
 <body>
 
-<form>
-
-<div class="form-group">
-    <label for="exampleFormControlTextarea1">Story</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+@extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 
 
-
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Upload picture</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-</form>
 
     
 </body>

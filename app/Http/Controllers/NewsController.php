@@ -10,6 +10,12 @@ class NewsController extends Controller
 public function save(Request $request){
 
     
+        $news =new News;
+      
+        $news->title = $request->input('title');
+        $news->content = $request->input('content');
+        $news->save();
+       return back()->with('success', 'News has been created');
 
     }
 

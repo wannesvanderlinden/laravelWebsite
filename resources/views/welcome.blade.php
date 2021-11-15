@@ -15,11 +15,22 @@
 <h1>Active news</h1>
     @foreach($news as $new)
     <figure class="figure">
-    {{$new->name}}
+    {{$new->title}}
     <br>
-  <img src="..." class="figure-img img-fluid rounded" alt="...">
+  <img src="" class="figure-img img-fluid rounded" alt="...">
   <figcaption class="figure-caption">{{$new->content}}</figcaption>
+  <figcaption class="figure-caption">{{$new->created_at}}</figcaption>
 </figure>
+<br>
+<label class="form-label" for="reaction">reaction</label> 
+<input type="text" name="reaction" id="reaction" width="100px">
+ @csrf
+
+      <button type="submit">post</button>
+      <br>
+
+
+                  
 @endforeach
 @endsection
 

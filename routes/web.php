@@ -47,9 +47,10 @@ Route::get('/FAQ',function () {
     return view('faq');
 })->name('FAQ');
 
-Route::get('/NewsDashboard',function () {
+Route::get('/news/editNews',function () {
     return view('editNews');
 } )->name('NewsDashboard');
+Route::get('/news/editNews', [NewsController::class,'get']);
 
 
 Route::get('/profile',function () {
@@ -64,3 +65,9 @@ Route::get('/profile/edit',function () {
 Route::post('/profile/edit', [userController::class,'saveChanges'])->name('save.profileEdit');
 
 Route::get('/logout',[LoginController::class,'logout' ])->middleware('auth')->name('loguit');
+
+Route::get('/news/newsCreator',function () {
+    return view('newsCreator');
+} )->middleware('auth')->name('newsCreator');
+
+Route::post('/news/newsCreator', [NewsController::class,'save'])->name('save.newsCreator');
