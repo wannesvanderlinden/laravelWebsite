@@ -6,18 +6,21 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
-
+<li class="nav-item">
+        <a class="nav-link" href="#">loguit</a>
+      </li>
       
      
           <li class="nav-item active">
-        <a class="nav-link" href="login">Login <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="login">edit news <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="login">edit FAQ <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="regristation">Regristation</a>
+        <a class="nav-link" href="regristation">Promote user</a>
       </li>
-   <li class="nav-item">
-        <a class="nav-link" href="/FAQ">FAQ</a>
-      </li>
+   
     
      
       

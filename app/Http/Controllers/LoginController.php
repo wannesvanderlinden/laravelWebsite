@@ -18,14 +18,18 @@ class LoginController extends Controller
     {
         $userInLog = $request->only('email', 'password');
 
-        if (Auth::attempt($userInLog)) {
+        if (Auth::attempt($userInLog,$request->input('remember-me'))){
            // Auth::login($user, true);
             // Authentication passed...
-            return redirect()->intended('welcome');
+            $request->session()->regenerate();
+
+            return redirect()->intended('');
         }
         else {
             
-             return redirect()->intended('login');
+             return back()->withErrors([
+                 'email' => 'The credentials does not match our records',
+             ]);
         }
     }
 }

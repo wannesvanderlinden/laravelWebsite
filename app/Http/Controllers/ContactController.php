@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Http\Controllers\Auth;
 
  class ContactController extends Controller
 {
@@ -19,7 +20,7 @@ use App\Models\Contact;
         $contact->message = $request->input('message');
         
         $contact->save();
-           
+            
         return back()->with('success','We have recieved it');
        
 

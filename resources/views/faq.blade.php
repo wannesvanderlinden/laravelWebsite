@@ -7,24 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-
-@extends('layouts\user')
+ @extends('layouts\user')
 @section('content')
- @if( Auth::user() !== null)
-<h1>Active news</h1>
-
-
-    @foreach($news as $new)
-{{$new->name}}
-@endforeach
-
-   
-
-
-@else
-<h1>not log</h1>
-    @endif
-
-@endsection
 </body>
 </html>
+
+
+
+
+
