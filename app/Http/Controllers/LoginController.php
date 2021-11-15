@@ -22,6 +22,7 @@ class LoginController extends Controller
            // Auth::login($user, true);
             // Authentication passed...
             $request->session()->regenerate();
+        
 
             return redirect()->intended('');
         }
@@ -32,4 +33,15 @@ class LoginController extends Controller
              ]);
         }
     }
+
+
+
+ public function logout(Request $request)
+    {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+         return redirect('/');
+    }
+
 }

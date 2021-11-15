@@ -7,11 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-@extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
+    
 </body>
 </html>
-
-
-
-
-

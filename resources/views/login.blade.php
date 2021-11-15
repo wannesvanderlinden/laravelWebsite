@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-   @extends('layouts\user')
+@extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 
 @section('content')
 

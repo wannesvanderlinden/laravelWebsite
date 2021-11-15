@@ -8,24 +8,17 @@
 
 
       
-     
-          <li class="nav-item active">
-        <a class="nav-link" href="login">edit news <span class="sr-only"></span></a>
-      </li>
+   
+    
         <li class="nav-item active">
-        <a class="nav-link" href="login">create news item <span class="sr-only"></span></a>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="login">edit FAQ <span class="sr-only"></span></a>
+        <a class="nav-link" href="login">Login <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="regristation">Promote user</a>
+        <a class="nav-link" href="regristation">Regristation</a>
       </li>
-   
-    <li class="nav-item">
-        <a class="nav-link" href="#">loguit</a>
+   <li class="nav-item">
+        <a class="nav-link" href="/FAQ">FAQ</a>
       </li>
-     
       
     </ul>
   </div>

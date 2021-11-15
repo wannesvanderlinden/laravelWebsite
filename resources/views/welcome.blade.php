@@ -8,23 +8,22 @@
 </head>
 <body>
 
-@extends('layouts\user')
+
+@extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
+
 @section('content')
- @if( Auth::user() !== null)
 <h1>Active news</h1>
-
-
     @foreach($news as $new)
-{{$new->name}}
+    <figure class="figure">
+    {{$new->name}}
+    <br>
+  <img src="..." class="figure-img img-fluid rounded" alt="...">
+  <figcaption class="figure-caption">{{$new->content}}</figcaption>
+</figure>
 @endforeach
-
-   
-
-
-@else
-<h1>not log</h1>
-    @endif
-
 @endsection
+
+
+
 </body>
 </html>

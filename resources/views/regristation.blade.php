@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
-   @extends('layouts\user')
+@extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
    @section('content')
 
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -38,6 +37,15 @@
                 <div class="form-outline mb-4">
                    <input type="password" name="password" id="password" class="form-control form-control-lg" >
                   <label class="form-label" for="password">Password</label> 
+
+
+                 <div class="form-outline mb-4">
+                 <label class="form-label" for="birthday">Your birthday</label>
+                 <input type="date" name="birthday" id="birthday" class="form-control form-control-lg" >
+                </div>
+
+
+
                      @if(Session::has('success'))
             <div class="alert alert-success">
                 {{Session::get('success')}}

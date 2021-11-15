@@ -46,3 +46,21 @@ Route::post('/contactUs',[ContactController::class,'save'])->middleware('auth')-
 Route::get('/FAQ',function () {
     return view('faq');
 })->name('FAQ');
+
+Route::get('/NewsDashboard',function () {
+    return view('editNews');
+} )->name('NewsDashboard');
+
+
+Route::get('/profile',function () {
+   
+    return view('profile');
+} )->middleware('auth')->name('profile');
+
+Route::get('/profile/edit',function () {
+   
+    return view('profileEdit');
+} )->middleware('auth')->name('profileEdit');
+Route::post('/profile/edit', [userController::class,'saveChanges'])->name('save.profileEdit');
+
+Route::get('/logout',[LoginController::class,'logout' ])->middleware('auth')->name('loguit');
