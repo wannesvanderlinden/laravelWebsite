@@ -5,6 +5,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\QuestionsController;
 
 
 
@@ -38,36 +40,69 @@ Route::get('/regristation', function () {
 //regristration save
 Route::post('/regristation',[userController::class,'save'])->name('regristation');
 
+//contact formulier
 Route::get('/contactUs', function () {
     return view('contact');
 })->name('contactUs');
 
 Route::post('/contactUs',[ContactController::class,'save'])->middleware('auth')->name('save.contact');
+
+
+//FAQ for user and guest
 Route::get('/FAQ',function () {
     return view('faq');
 })->name('FAQ');
 
+
+//News edit admin
 Route::get('/news/editNews',function () {
     return view('editNews');
 } )->name('NewsDashboard');
 Route::get('/news/editNews', [NewsController::class,'get']);
 
-
+//profile for user 
 Route::get('/profile',function () {
    
     return view('profile');
 } )->middleware('auth')->name('profile');
 
+//edit profile
 Route::get('/profile/edit',function () {
-   
     return view('profileEdit');
 } )->middleware('auth')->name('profileEdit');
+
 Route::post('/profile/edit', [userController::class,'saveChanges'])->name('save.profileEdit');
 
+//Log uit
 Route::get('/logout',[LoginController::class,'logout' ])->middleware('auth')->name('loguit');
 
+//admin news creator
 Route::get('/news/newsCreator',function () {
     return view('newsCreator');
 } )->middleware('auth')->name('newsCreator');
 
 Route::post('/news/newsCreator', [NewsController::class,'save'])->name('save.newsCreator');
+
+//admin faq edit dashboard
+Route::get('/FAQ/edit',function () {
+    return view('faqEdit');
+});
+
+//admin edit categories
+Route::get('/FAQ/edit',[CategorieController::class,'get' ]);
+Route::get('/FAQ/categorie/{categorie}/edit',[CategorieController::class,'edit' ])->name('categorie.edit');
+Route::put('/FAQ/categorie/{categorie}',[CategorieController::class,'update' ]);
+
+//admin create categories
+Route::get('/FAQ/categorie/create',function () {
+    return view('categorieCreate');
+});
+Route::post('/FAQ/categorie/create',[CategorieController::class,'store' ]);
+
+//admin delete categories + questions of that categorie
+Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'destroy' ]);
+
+
+//admin edit questions of post and update them
+Route::get('/FAQ/categorie/{{$categorie}}/edit/questions',[QuestionsController::class,'edit' ]);
+Route::put('/FAQ/questions/{categorie}',[QuestionsController::class,'update' ]);
