@@ -28,7 +28,7 @@ Route::get('/', [NewsController::class,'get' ])->name('index');
 //login
 Route::get('/login',function () {
     return view('login');
-} )->name('login');
+} )->middleware('guest')->name('login');
 
 Route::post('/login',[LoginController::class,'authenticate'] )->name('login');
 
@@ -104,5 +104,11 @@ Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'dest
 
 
 //admin edit questions of post and update them
-Route::get('/FAQ/categorie/{{$categorie}}/edit/questions',[QuestionsController::class,'edit' ]);
-Route::put('/FAQ/questions/{categorie}',[QuestionsController::class,'update' ]);
+Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::class,'show' ])->name('questions.editShow');
+
+
+Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->name('questions.edit');
+Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ]);
+
+Route::get('/FAQ/question/add',[QuestionsController::class,'create']);
+Route::put('/FAQ/question/add',[QuestionsController::class,'store']);

@@ -25,7 +25,8 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = categorie::all();
+        return view('questionAdd',['categories' => $categories]);
     }
 
     /**
@@ -36,18 +37,32 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'answer' => 'required',
+            'categories' => 'required'
+         ]);
+        $question =new questions;
+        $question->title = $request->input('title');
+        $question->answer = $request->input('answer');
+        $question->categorie_id = $request->input('categories');
+        
+        $question->save();
+       return back()->with('success', 'Account is succesfully registerd');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\questions  $questions
+     * @param  \App\Models\categorie $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(questions $questions)
+    public function show(categorie $categorie)
     {
-        //
+         $questions = $categorie->questions;
+    
+
+         return view('questionEdit',['questions' => $questions]);
     }
 
     /**
@@ -56,12 +71,11 @@ class QuestionsController extends Controller
      * @param  \App\Models\questions  $questions
      * @return \Illuminate\Http\Response
      */
-    public function edit(categorie $categorie)
+    public function edit(questions  $questions)
     {
-        
-          $questions = questions::where('categorie_id','=',$categorie->id);
+        $categories =categorie::all();
 
-         return view('questionEdit',['questions' => $questions]);
+          return view('questionEditSave',['question' => $questions],['categories'=>$categories]);
     }
 
     /**
@@ -73,7 +87,14 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, questions $questions)
     {
-        //
+        $questions->update([
+            'title'=> request('title'),
+            'answer'=>request('answer'),
+            'categorie_id'=>request('categories'),
+
+            
+        ]);
+        return redirect('/FAQ/edit');
     }
 
     /**

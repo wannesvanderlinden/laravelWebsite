@@ -8,8 +8,11 @@ use App\Models\categorie;
 
 class questions extends Model
 {
+    protected $fillable=[
+        'title','answer','categorie_id',
+    ];
     use HasFactory;
-    public function categories(){
+    public function categorie(){
         return $this->belongsTo(categorie::class);
     }
 }

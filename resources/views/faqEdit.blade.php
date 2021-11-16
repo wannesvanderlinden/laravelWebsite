@@ -23,7 +23,7 @@
         <a href="/FAQ/categorie/{{$categorie->id}}/edit" class="btn btn-primary">edit categorie</a>
         <a href="/FAQ/categorie/{{$categorie->id}}/delete" class="btn btn-primary">delete categorie</a>
         <a href="/FAQ/categorie/{{$categorie->id}}/edit/questions" class="btn btn-primary">edit questions</a>
-        <a href="/FAQ/categorie/{{$categorie->id}}/delete" class="btn btn-primary">add question</a>
+        <a href="/FAQ/question/add" class="btn btn-primary">add question</a>
       </div>
     </div>
   </div>
