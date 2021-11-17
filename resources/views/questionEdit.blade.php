@@ -25,6 +25,7 @@
       <td>{{$question->title}}</td>
       <td>{{$question->answer}}</td>
      <td> <a class="nav-link" href="/FAQ/questions/{{$question->id}}/edit">Edit</a></td>
+     <td> <a class="nav-link" href="/FAQ/questions/{{$question->id}}/delete">Delete</a></td>
     </tr>
    @endforeach
   </tbody>

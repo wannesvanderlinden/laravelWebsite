@@ -105,7 +105,9 @@ class QuestionsController extends Controller
      */
     public function destroy(questions $questions)
     {
-        //
+         questions::find($questions->id)->delete();
+    
+       return back()->with('success', 'Account is succesfully registerd');
     }
 
 

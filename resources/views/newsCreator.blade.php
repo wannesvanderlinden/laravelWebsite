@@ -9,7 +9,7 @@
 <body>
      @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
    @section('content')
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
     <label for="content">Title</label>
     <textarea class="form-control" id="title" rows="1" width="5" name="title"></textarea>
@@ -21,10 +21,10 @@
   </div>
 
 
- <div class="form-group">
-    <label for="exampleFormControlFile1">Upload picture</label>
-    <input type="file" class="form-control-file" id="image" name="image">
-  </div>
+<div class="form-group">
+  <label for="photo">Attach a photograph</label>
+  <input type="file" name="photo" id="photo" accept="image/*" class="form-control-file">
+</div>
           @if(Session::has('success'))
             <div class="alert alert-success">
                 {{Session::get('success')}}

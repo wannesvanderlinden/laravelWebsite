@@ -108,6 +108,7 @@ Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::cla
 
 
 Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->name('questions.edit');
+Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy']);
 Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ]);
 
 Route::get('/FAQ/question/add',[QuestionsController::class,'create']);
