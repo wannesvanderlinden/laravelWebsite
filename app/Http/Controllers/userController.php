@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
     public function save(Request $request){
  $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:5'
          ]);
         $user =new User;
@@ -33,6 +33,33 @@ use Illuminate\Support\Facades\Auth;
     return view('welcome', ['users' => $users]);
 
     }
+
+ public function show(Request $request){
+
+      $users= User::all();
+    return view('adminPromote', ['users' => $users]);
+
+    }
+    public function promote(User $user){
+    
+       
+    $promote= User::find($user->id);
+    $promote->admin=true;
+    $promote->save();
+         return  redirect()->intended('/user/promote')->with('success', 'user is been promoted');
+
+    }
+      public function demote(User $user){
+    
+       
+    $promote= User::find($user->id);
+    $promote->admin=false;
+    $promote->save();
+         return  redirect()->intended('/user/promote')->with('success', 'user is been demoted');
+
+    }
+
+
      public function saveChanges(Request $request){
        
       $user= User::find(Auth::user()->id);
@@ -44,5 +71,8 @@ use Illuminate\Support\Facades\Auth;
     return  redirect()->intended('/profile')->with('success', 'Account is been updated');
 
     }
+ 
+    
+     
     
 }

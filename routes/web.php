@@ -112,3 +112,10 @@ Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update'
 
 Route::get('/FAQ/question/add',[QuestionsController::class,'create']);
 Route::put('/FAQ/question/add',[QuestionsController::class,'store']);
+
+Route::get('/user/promote',[userController::class,'show']);
+Route::get('/user/promote/{user}',[userController::class,'promote']);
+
+
+Route::get('/user/demote/{user}',[userController::class,'demote']);
+
