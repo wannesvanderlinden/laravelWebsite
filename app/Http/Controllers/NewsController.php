@@ -16,7 +16,7 @@ public function save(Request $request){
         $news->content = $request->input('content');
      
         //to do
-        $fileName = rand(0,1000000000) . '.' . $request->file('photo')->extension(); 
+        $fileName = date('mdYHis') .uniqid(). '.' . $request->file('photo')->extension(); 
 
        
         $request->file('photo')->storeAs('public/news', $fileName);
