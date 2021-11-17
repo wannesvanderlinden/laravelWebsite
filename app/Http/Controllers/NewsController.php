@@ -14,7 +14,14 @@ public function save(Request $request){
       
         $news->title = $request->input('title');
         $news->content = $request->input('content');
+
+        //to do
+        $fileName = $request->get('name') . '.' . $request->file('photo')->extension(); 
+        $request->file('photo')->storeAs('public/news', $fileName);
+        
         $news->save();
+        
+          
        return back()->with('success', 'News has been created');
 
     }
