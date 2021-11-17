@@ -14,11 +14,13 @@ public function save(Request $request){
       
         $news->title = $request->input('title');
         $news->content = $request->input('content');
-
+     
         //to do
-        $fileName = $request->get('name') . '.' . $request->file('photo')->extension(); 
+        $fileName = rand(0,1000000000) . '.' . $request->file('photo')->extension(); 
+
+       
         $request->file('photo')->storeAs('public/news', $fileName);
-        
+        $news->img=$fileName;
         $news->save();
         
           

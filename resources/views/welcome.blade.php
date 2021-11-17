@@ -20,7 +20,7 @@
  @csrf
 
 <div class="card mb-3">
-  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+  <img class="card-img-top" src="{{asset('storage/news/'.$new->img)}}" alt="Card image cap" >
   <div class="card-body">
     <h5 class="card-title">{{$new->title}}</h5>
     <p class="card-text">{{$new->content}}</p>
