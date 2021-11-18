@@ -49,10 +49,8 @@ Route::post('/contactUs',[ContactController::class,'save'])->middleware('auth')-
 
 
 //FAQ for user and guest
-Route::get('/FAQ',function () {
-    return view('faq');
-})->name('FAQ');
-
+Route::get('/FAQ',[CategorieController::class,'show' ]);
+Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser']);
 
 //News edit admin
 Route::get('/news/editNews',function () {

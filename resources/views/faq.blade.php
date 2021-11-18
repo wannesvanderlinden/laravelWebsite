@@ -11,26 +11,19 @@
 @section('content')
 
 <h1>Categories</h1>
-<div class="row">
-  <div class="col-sm-6">
+@foreach ($categories as $categorie)
+    <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="/FAQ/{{categorie->name}}" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">{{$categorie->name}}</h5>
+        <p class="card-text">{{$categorie->summary}}</p>
+        <a href="/FAQ/{{$categorie->id}}/show" class="btn btn-primary">Go to questions</a>
       </div>
     </div>
   </div>
 </div>
+@endforeach
+  
 @endsection
 </body>
 </html>

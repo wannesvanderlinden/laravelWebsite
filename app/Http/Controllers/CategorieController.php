@@ -56,7 +56,8 @@ class CategorieController extends Controller
      */
     public function show(categorie $categorie)
     {
-       
+        $categories= categorie::all();
+    return view('faq', ['categories' => $categories]);
     }
 
     /**
@@ -104,6 +105,7 @@ class CategorieController extends Controller
     public function get(Request $request){
 
       $categories= categorie::all();
+    
     return view('faqEdit', ['categories' => $categories]);
 
     }

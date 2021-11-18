@@ -11,10 +11,10 @@
    
     
         <li class="nav-item active">
-        <a class="nav-link" href="login">Login <span class="sr-only"></span></a>
+        <a class="nav-link" href="/login">Login <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="regristation">Regristation</a>
+        <a class="nav-link" href="/regristation">Regristation</a>
       </li>
    <li class="nav-item">
         <a class="nav-link" href="/FAQ">FAQ</a>

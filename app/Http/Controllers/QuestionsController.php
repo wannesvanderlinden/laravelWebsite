@@ -64,6 +64,13 @@ class QuestionsController extends Controller
 
          return view('questionEdit',['questions' => $questions]);
     }
+    public function showForUser(categorie $categorie)
+    {
+         $questions = $categorie->questions;
+    
+
+         return view('faqQuestions',['questions' => $questions]);
+    }
 
     /**
      * Show the form for editing the specified resource.
