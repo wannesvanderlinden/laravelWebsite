@@ -28,7 +28,12 @@
                                 <label for="password" class="text-info">Password:</label><br>
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"  class="text-right">
+                            <div>  
+                             <a href="/forgotPassword" class="text-info">Forgot password?</a>
+                            </div>
+                         
+                            <br>
                             @csrf
                                 <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
@@ -41,6 +46,9 @@
                             
                                 <a href="/regristation" class="text-info">Register here</a>
                             </div>
+
+                             
+                            
                         </form>
                         @if($errors->has('email'))
                         <div class="error">

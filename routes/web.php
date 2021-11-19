@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\MailController;
 
 
 
@@ -32,6 +33,11 @@ Route::get('/login',function () {
 
 Route::post('/login',[LoginController::class,'authenticate'] )->name('login');
 
+Route::post('/forgotPassword', [MailController::class, 'sendEmail']);
+Route::get('/forgotPassword', function () {
+    return view('forgotPassword');});
+
+
 //regristation
 Route::get('/regristation', function () {
     return view('regristation');
@@ -56,7 +62,7 @@ Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser']);
 Route::get('/news/editNews',function () {
     return view('editNews');
 } )->name('NewsDashboard');
-Route::get('/news/editNews', [NewsController::class,'get']);
+Route::get('/news/editNews', [NewsController::class,'show']);
 
 //profile for user 
 Route::get('/profile',function () {
@@ -117,4 +123,8 @@ Route::get('/user/promote/{user}',[userController::class,'promote']);
 
 
 Route::get('/user/demote/{user}',[userController::class,'demote']);
+//news edit
+Route::get('/news/{news}/edit',[NewsController::class,'edit']);
+Route::post('/news/{news}/edit',[NewsController::class,'update']);
 
+Route::get('/news/{news}/delete',[NewsController::class,'delete']);

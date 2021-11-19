@@ -71,6 +71,19 @@ use Illuminate\Support\Facades\Auth;
     return  redirect()->intended('/profile')->with('success', 'Account is been updated');
 
     }
+
+    
+     public function sendEmail(Request $request){
+       
+      $user= User::find(Auth::user()->id);
+     $user->name = $request->input('name');
+        $user->username = $request->input('username');
+       $user->birthday =  $request->input('birthday');
+           $user->aboutMe =  $request->input('aboutMe');
+           $user->save();
+    return  redirect()->intended('/profile')->with('success', 'Account is been updated');
+
+    }
  
     
      
