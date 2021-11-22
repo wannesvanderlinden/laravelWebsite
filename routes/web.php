@@ -31,27 +31,25 @@ Route::get('/login',function () {
     return view('login');
 } )->middleware('guest')->name('login');
 
-Route::post('/login',[LoginController::class,'authenticate'] )->name('login');
+Route::post('/login',[LoginController::class,'authenticate'] )->middleware('guest')->name('login');
 
-Route::post('/forgotPassword', [MailController::class, 'sendEmail']);
-Route::get('/forgotPassword', function () {
-    return view('forgotPassword');});
+
 
 
 //regristation
 Route::get('/regristation', function () {
     return view('regristation');
-})->name('regristation');
+})->middleware('guest')->name('regristation');
 
 //regristration save
-Route::post('/regristation',[userController::class,'save'])->name('regristation');
+Route::post('/regristation',[userController::class,'save'])->middleware('guest')->name('regristation');
 
 //contact formulier
 Route::get('/contactUs', function () {
     return view('contact');
 })->name('contactUs');
 
-Route::post('/contactUs',[ContactController::class,'save'])->middleware('auth')->name('save.contact');
+Route::post('/contactUs',[ContactController::class,'save'])->name('save.contact');
 
 
 //FAQ for user and guest
@@ -62,7 +60,7 @@ Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser']);
 Route::get('/news/editNews',function () {
     return view('editNews');
 } )->name('NewsDashboard');
-Route::get('/news/editNews', [NewsController::class,'show']);
+Route::get('/news/editNews', [NewsController::class,'show'])->middleware('admin');
 
 //profile for user 
 Route::get('/profile',function () {
@@ -83,9 +81,9 @@ Route::get('/logout',[LoginController::class,'logout' ])->middleware('auth')->na
 //admin news creator
 Route::get('/news/newsCreator',function () {
     return view('newsCreator');
-} )->middleware('auth')->name('newsCreator');
+} )->middleware('admin')->name('newsCreator');
 
-Route::post('/news/newsCreator', [NewsController::class,'save'])->name('save.newsCreator');
+Route::post('/news/newsCreator', [NewsController::class,'save'])->middleware('admin')->name('save.newsCreator');
 
 //admin faq edit dashboard
 Route::get('/FAQ/edit',function () {
@@ -93,38 +91,47 @@ Route::get('/FAQ/edit',function () {
 });
 
 //admin edit categories
-Route::get('/FAQ/edit',[CategorieController::class,'get' ]);
-Route::get('/FAQ/categorie/{categorie}/edit',[CategorieController::class,'edit' ])->name('categorie.edit');
-Route::put('/FAQ/categorie/{categorie}',[CategorieController::class,'update' ]);
+Route::get('/FAQ/edit',[CategorieController::class,'get' ])->middleware('admin');
+Route::get('/FAQ/categorie/{categorie}/edit',[CategorieController::class,'edit' ])->middleware('admin')->name('categorie.edit');
+Route::put('/FAQ/categorie/{categorie}',[CategorieController::class,'update' ])->middleware('admin');
 
 //admin create categories
 Route::get('/FAQ/categorie/create',function () {
     return view('categorieCreate');
 });
-Route::post('/FAQ/categorie/create',[CategorieController::class,'store' ]);
+Route::post('/FAQ/categorie/create',[CategorieController::class,'store' ])->middleware('admin');
 
 //admin delete categories + questions of that categorie
-Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'destroy' ]);
+Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'destroy' ])->middleware('admin');
 
 
 //admin edit questions of post and update them
-Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::class,'show' ])->name('questions.editShow');
+Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::class,'show' ])->middleware('admin')->name('questions.editShow');
 
 
-Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->name('questions.edit');
-Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy']);
-Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ]);
+Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->middleware('admin')->name('questions.edit');
+Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy'])->middleware('admin');
+Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ])->middleware('admin');
 
-Route::get('/FAQ/question/add',[QuestionsController::class,'create']);
-Route::put('/FAQ/question/add',[QuestionsController::class,'store']);
+Route::get('/FAQ/question/add',[QuestionsController::class,'create'])->middleware('admin');
+Route::put('/FAQ/question/add',[QuestionsController::class,'store'])->middleware('admin');
 
-Route::get('/user/promote',[userController::class,'show']);
-Route::get('/user/promote/{user}',[userController::class,'promote']);
+Route::get('/user/promote',[userController::class,'show'])->middleware('admin');
+Route::get('/user/promote/{user}',[userController::class,'promote'])->middleware('admin');
 
 
-Route::get('/user/demote/{user}',[userController::class,'demote']);
+Route::get('/user/demote/{user}',[userController::class,'demote'])->middleware('admin');
 //news edit
-Route::get('/news/{news}/edit',[NewsController::class,'edit']);
-Route::post('/news/{news}/edit',[NewsController::class,'update']);
+Route::get('/news/{news}/edit',[NewsController::class,'edit'])->middleware('admin');
+Route::post('/news/{news}/edit',[NewsController::class,'update'])->middleware('admin');
 
-Route::get('/news/{news}/delete',[NewsController::class,'delete']);
+Route::get('/news/{news}/delete',[NewsController::class,'delete'])->middleware('admin');
+
+//admin inbox
+Route::get('/admin/inbox',[ContactController::class,'show'])->middleware('admin');
+Route::get('/admin/{contact}/reply',[ContactController::class,'get'])->middleware('admin');
+Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middleware('admin');
+
+
+
+

@@ -8,5 +8,5 @@
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+{{ $mailData['name'] }}
 @endcomponent

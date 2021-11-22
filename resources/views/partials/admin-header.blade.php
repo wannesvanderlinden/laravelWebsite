@@ -21,6 +21,10 @@
       <li class="nav-item">
         <a class="nav-link" href="/user/promote">Promote user</a>
       </li>
+       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/inbox">Inbox Contact</a>
+      </li>
    
     <li class="nav-item">
         <a class="nav-link" href="/logout">loguit</a>

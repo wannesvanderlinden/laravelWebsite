@@ -25,8 +25,16 @@ use App\Http\Controllers\Auth;
        
 
     }
-    public function get(Request $request){
+    public function get(Contact $contact){
+       
 
+    return view('adminReplyContact', ['contact' => $contact]);
+
+    }
+    public function show(Request $request){
+
+      $forms= Contact::all();
+    return view('adminInboxContact', ['forms' => $forms]);
 
     }
     
