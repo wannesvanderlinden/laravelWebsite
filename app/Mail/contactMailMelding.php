@@ -31,7 +31,7 @@ class contactMailMelding extends Mailable
      */
     public function build()
     {
-        return $this->markdown('forgotPasswordSender')
+        return $this->markdown('contactReply')
               ->with('mailData', $this->mailData);
     }
 }
