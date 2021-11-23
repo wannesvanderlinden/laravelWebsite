@@ -16,7 +16,7 @@
         @endif
    <fieldset disabled>
     <legend>Profile</legend>
-    <img src="{{asset('storage/news/03qW9E6F8kYYxIdbnJYJPaS4lDtehGrrweMrLhiV.jpg')}}" class="img-thumbnail" alt="..." width="240px" height="240px">
+    <img src="{{asset('storage/profile/profile.jpg')}}" class="img-thumbnail" alt="..." width="240px" height="240px">
     <div class="mb-3">
       <label for="disabledTextInput" class="form-label">username:</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="{{Auth::user()->username}}">

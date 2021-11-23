@@ -11,5 +11,7 @@ class News extends Model
 protected $fillable=[
         'title','content','img',
     ];
-    
+    public function reactions(){
+        return $this->hasMany(reaction::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\ReactionController;
 
 
 
@@ -25,6 +26,8 @@ use App\Http\Controllers\MailController;
 //main
 Route::get('/', [userController::class,'get' ])->name('index');
 Route::get('/', [NewsController::class,'get' ])->name('index');
+
+Route::post('/', [ReactionController::class,'store']);
 
 //login
 Route::get('/login',function () {

@@ -23,7 +23,7 @@
   </div>
  
 </div>
-
+<span class="border">
     @foreach($news as $new)
 
  @csrf
@@ -38,13 +38,33 @@
     <h5 class="card-title">{{$new->title}}</h5>
     <p class="card-text">{{$new->content}}</p>
       <p class="card-text"><small class="text-muted">Created at:{{$new->created_at}} </small></p>
-    <label class="form-label" for="reaction">reaction</label> 
-<input type="text" name="reaction" id="reaction" width="100px">
-<button type="submit">post</button>
+@foreach ($new->reactions as $reaction)
+<br>
+<div class="card">
+  <div class="card-header">
+     Reaction: {{$reaction->name}}
   </div>
-</div>            
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{$reaction->content}}</p>
+      <footer class="blockquote-footer">{{$reaction->created_at}}</footer>
+    </blockquote>
+  </div>
+</div>
+    
 @endforeach
-
+     
+      <form action="" method="post">
+       @csrf
+    <label class="form-label" for="content">reaction</label> 
+<input type="text" name="content" id="reaction" width="100px">
+<button type="submit">post</button>
+ <input type="hidden" id="news_id" name="news_id" value="{{$new->id}}">
+  </div>
+</div>  
+</form>          
+@endforeach
+</span>
 @endsection
 
 
