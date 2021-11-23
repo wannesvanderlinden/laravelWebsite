@@ -11,9 +11,7 @@
           <li class="nav-item active">
         <a class="nav-link" href="/profile">Profiel <span class="sr-only"></span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contactUs">Contact</a>
-      </li>
+     
    <li class="nav-item">
         <a class="nav-link" href="/FAQ">FAQ</a>
       </li>
