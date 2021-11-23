@@ -23,8 +23,10 @@
   </div>
  
 </div>
-<span class="border">
+
     @foreach($news as $new)
+    <br>
+    <div class="card" style="border:5px solid black;">
 
  @csrf
 
@@ -33,11 +35,12 @@
 
 
       <div class="card" style="width: 100%; height:5%;">
-  <img class="card-img-top" src="{{asset('storage/news/'.$new->img)}}" alt="Card image cap" style=" height:400px;">
+  <img class="card-img-top" src="{{asset('storage/news/'.$new->img)}}" alt="Card image cap" style=" height:400px; ">
   <div class="card-body">
     <h5 class="card-title">{{$new->title}}</h5>
     <p class="card-text">{{$new->content}}</p>
       <p class="card-text"><small class="text-muted">Created at:{{$new->created_at}} </small></p>
+  
 @foreach ($new->reactions as $reaction)
 <br>
 <div class="card">
@@ -62,9 +65,12 @@
  <input type="hidden" id="news_id" name="news_id" value="{{$new->id}}">
   </div>
 </div>  
-</form>          
+</form> 
+<br> 
+    
 @endforeach
-</span>
+</div>
+<br>
 @endsection
 
 
