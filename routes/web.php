@@ -135,6 +135,7 @@ Route::get('/admin/inbox',[ContactController::class,'show'])->middleware('admin'
 Route::get('/admin/{contact}/reply',[ContactController::class,'get'])->middleware('admin');
 Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middleware('admin');
 
-
+//admin inbox
+Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth');
 
 

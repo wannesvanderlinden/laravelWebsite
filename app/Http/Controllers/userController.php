@@ -40,6 +40,13 @@ use Illuminate\Support\Facades\Auth;
     return view('adminPromote', ['users' => $users]);
 
     }
+
+     public function showProfile(User $user){
+
+     
+    return view('otherUserProfile', ['user' => $user]);
+
+    }
     public function promote(User $user){
     
        

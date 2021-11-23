@@ -14,10 +14,12 @@ class ReactionController extends Controller
             'content' => 'required',
            
          ]);
+         
         $reaction =new Reaction;
         $reaction->name = Auth::user()->username;
         $reaction->content = $request->input('content');
         $reaction->news_id = $request->input('news_id');
+        $reaction->user_id = Auth::user()->id;
         
         $reaction->save();
        return back()->with('success', 'Reaction is added');

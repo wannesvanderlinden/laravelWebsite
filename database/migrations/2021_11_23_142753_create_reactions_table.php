@@ -18,6 +18,7 @@ class CreateReactionsTable extends Migration
             $table->string('name');
             $table->string('content');
             $table->foreignId("news_id")->constraint("news")->onDelete("cascade");
+            $table->foreignId("user_id")->constraint("user")->onDelete("cascade");
             $table->timestamps();
         });
     }

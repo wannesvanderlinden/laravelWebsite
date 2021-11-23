@@ -45,7 +45,8 @@
 <br>
 <div class="card">
   <div class="card-header">
-     Reaction: {{$reaction->name}}
+
+     Reaction: <a class="nav-link" href="/profile/user/{{$reaction->user_id}}">{{$reaction->name}}</a> 
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">

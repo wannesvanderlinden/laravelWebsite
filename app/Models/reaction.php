@@ -13,4 +13,7 @@ class reaction extends Model
      public function news(){
         return $this->belongsTo(News::class);
     }
+     public function users(){
+        return $this->belongsTo(User::class);
+    }
 }
