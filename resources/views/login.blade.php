@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group"  class="text-right">
                             <div>  
-                             <a href="/forgotPassword" class="text-info">Forgot password?</a>
+                             <a href="/forgot-password" class="text-info">Forgot password?</a>
                             </div>
                          
                             <br>
