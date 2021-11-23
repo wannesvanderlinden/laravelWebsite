@@ -25,7 +25,7 @@ use App\Http\Controllers\ReactionController;
 
 //main
 Route::get('/', [userController::class,'get' ])->name('index');
-Route::get('/', [NewsController::class,'get' ])->name('index');
+Route::get('/', [NewsController::class,'get' ]);
 
 Route::post('/', [ReactionController::class,'store']);
 
