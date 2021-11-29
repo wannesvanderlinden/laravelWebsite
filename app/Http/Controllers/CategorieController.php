@@ -85,7 +85,7 @@ class CategorieController extends Controller
             'summary'=>request('summary'),
             
         ]);
-        return redirect('/FAQ/edit');
+        return redirect('/FAQ/edit')->with('succes', 'Categorie is succesfully updated');
     }
 
     /**

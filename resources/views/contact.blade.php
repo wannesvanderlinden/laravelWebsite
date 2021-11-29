@@ -27,11 +27,14 @@
               <label class="col-md-3 control-label" for="name">Name</label>
               <div class="col-md-9">
                 <input id="name" name="name" type="text" placeholder="Your name" class="form-control {{ $errors->has('name') ? 'error' : '' }}">
-                @if ($errors->has('name'))
-               <div class="error">
-            {{ $errors->first('name') }}
-        </div>
-        @endif 
+                      @if($errors->has('name'))
+                        
+                        <div class="alert alert-danger" role="alert">
+{{ $errors->first('name') }}
+</div>
+          
+            
+                     @endif
     </div>    
            
             </div>
@@ -42,11 +45,14 @@
               <label class="col-md-3 control-label" for="email">Your E-mail</label>
               <div class="col-md-9">
                 <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-                   @if ($errors->has('email'))
-               <div class="error">
-            {{ $errors->first('email') }}
-        </div>
-        @endif
+                 @if($errors->has('email'))
+                        
+                        <div class="alert alert-danger" role="alert">
+{{ $errors->first('email') }}
+</div>
+          
+            
+                     @endif
     </div>
          
             </div>
@@ -56,13 +62,18 @@
               <label class="col-md-3 control-label" for="message">Your message</label>
               <div class="col-md-9">
                 <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
-                @if ($errors->has('message'))
-               <div class="error">
-            {{ $errors->first('message') }}
+             @if($errors->has('message'))
+                        
+                        <div class="alert alert-danger" role="alert">
+{{ $errors->first('message') }}
+</div>
+          
+            
+                     @endif
         </div>
             
         </div>
-        @endif
+        
             </div>
                @csrf
             <!-- Form actions -->

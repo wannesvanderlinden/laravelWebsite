@@ -60,11 +60,19 @@
      
       <form action="" method="post">
        @csrf
-    <label class="form-label" for="content">reaction</label> 
-<input type="text" name="content" id="reaction" width="100px">
+    <label class="form-label" for="reaction">reaction</label> 
+<input type="text" name="reaction" id="reaction" width="100px">
 <button type="submit">post</button>
  <input type="hidden" id="news_id" name="news_id" value="{{$new->id}}">
   </div>
+  @if($errors->has('reaction'))
+                        
+                        <div class="alert alert-danger" role="alert">
+{{ $errors->first('reaction') }}
+</div>
+          
+            
+                     @endif
 </div>  
 </form> 
 <br> 

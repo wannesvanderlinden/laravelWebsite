@@ -10,6 +10,11 @@ class NewsController extends Controller
 {
 public function save(Request $request){
 
+    $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'photo' => 'required'
+         ]);
     
         $news =new News;
       
@@ -54,7 +59,7 @@ public function save(Request $request){
             }
         
         
-       return back()->with('success', 'News has been created');
+       return back()->with('success', 'News has been updated');
 
     }
 
@@ -81,7 +86,7 @@ public function save(Request $request){
 
        public function delete(News $news){
     News::find($news->id)->delete();
-       return redirect('/news/editNews');
+       return redirect('/news/editNews')->with('success', 'News has been deleted');
     
 
     }

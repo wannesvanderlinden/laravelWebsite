@@ -14,7 +14,7 @@
    @section('content')
  <h1>Categories</h1>
 @foreach ($categories as $categorie )
-    <div class="row">
+    
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
@@ -30,7 +30,11 @@
 @endforeach
 <br>
 <a href="/FAQ/categorie/create" class="btn btn-primary">Create categorie</a>
-
+  @if(Session::has('succes'))
+            <div class="alert alert-success">
+                {{Session::get('succes')}}
+            </div>
+        @endif
 @endsection
 </body>
 </html>

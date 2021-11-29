@@ -11,13 +11,13 @@ class ReactionController extends Controller
     {
         
         $this->validate($request, [
-            'content' => 'required',
+            'reaction' => 'required',
            
          ]);
          
         $reaction =new Reaction;
         $reaction->name = Auth::user()->username;
-        $reaction->content = $request->input('content');
+        $reaction->content = $request->input('reaction');
         $reaction->news_id = $request->input('news_id');
         $reaction->user_id = Auth::user()->id;
         
