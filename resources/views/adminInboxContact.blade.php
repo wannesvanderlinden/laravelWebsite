@@ -21,6 +21,7 @@
   </thead>
   <tbody>
    @foreach ($forms as $form )
+   @if ($form->isReply == 0)
     <tr>
       <th scope="row">{{$form->id}}</th>
       <td>{{$form->name}}</td>
@@ -28,6 +29,7 @@
        <td>{{$form->email}}</td>
      <td> <a class="nav-link" href="/admin/{{$form->id}}/reply">Reply</a></td>
     </tr>
+     @endif
    @endforeach
   </tbody>
 @endsection

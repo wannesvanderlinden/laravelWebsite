@@ -23,6 +23,7 @@ class ContactSeeder extends Seeder
             'message' => 'Is this site trustable and can I get admin privelege',
                 'created_at'=>date("Y/m/d"),
                 'updated_at'=>date("Y/m/d"),
+                 'isReply'=>false,
                 
                 
         ]);

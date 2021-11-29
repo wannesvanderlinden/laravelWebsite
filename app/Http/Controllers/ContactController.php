@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth;
         $contact->name = $request->input('name');
         $contact->email = $request->input('email');
         $contact->message = $request->input('message');
+        $contact->isReply=false;
         
         $contact->save();
             

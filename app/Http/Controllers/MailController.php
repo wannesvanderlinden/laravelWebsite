@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Contact;
 
+
 class MailController extends Controller
 {
         public function sendEmail(Request $request,Contact $contact) {
@@ -31,6 +32,13 @@ class MailController extends Controller
         ];
     
         Mail::to($email)->send(new contactMailMelding($mailData));
+        $contact->update([
+            'isReply'=> true,
+          
+          
+
+            
+        ]);
    
         return redirect()->intended('/');
     }

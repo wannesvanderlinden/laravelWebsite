@@ -19,6 +19,7 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('message');
+             $table->boolean('isReply');
         });
     }
 
