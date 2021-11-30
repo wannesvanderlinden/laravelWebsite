@@ -57,8 +57,8 @@
 </div>
     
 @endforeach
-     
-      <form action="" method="post">
+     @if (Auth::user() !==null)
+               <form action="" method="post">
        @csrf
     <label class="form-label" for="reaction">reaction</label> 
 <input type="text" name="reaction" id="reaction" width="100px">
@@ -75,6 +75,8 @@
                      @endif
 </div>  
 </form> 
+     @endif
+
 <br> 
     
 @endforeach
