@@ -25,6 +25,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin/inbox">Inbox Contact</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutMe">aboutMe</a>
+      </li>
    
     <li class="nav-item">
         <a class="nav-link" href="/logout">loguit</a>

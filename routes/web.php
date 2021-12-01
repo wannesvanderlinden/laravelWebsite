@@ -189,4 +189,8 @@ Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middl
 //admin inbox
 Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth');
 
+//admin inbox
+Route::get('/aboutMe',function () {
+    return view('aboutMe.aboutMe');});
+
 
