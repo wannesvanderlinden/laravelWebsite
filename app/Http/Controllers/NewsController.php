@@ -50,7 +50,7 @@ public function save(Request $request){
             }
             else{
               
-          Storage::delete($news->img);
+          Storage::delete("public/news/$news->img");
        $fileName = date('mdYHis') .uniqid(). '.' . $request->file('photo')->extension(); 
         $request->file('photo')->storeAs('public/news', $fileName);
                $news->update([
@@ -88,6 +88,7 @@ public function save(Request $request){
        public function delete(News $news){
           reaction::where('news_id','=',$news->id)->delete();
           News::find($news->id)->delete();
+          Storage::delete("public/news/$news->img");
        return redirect('/news/editNews')->with('success', 'News has been deleted');
     
 

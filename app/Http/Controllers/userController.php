@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
  $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:5'
+            'password' => 'required'
          ]);
         $user =new User;
         $user->name = $request->input('name');

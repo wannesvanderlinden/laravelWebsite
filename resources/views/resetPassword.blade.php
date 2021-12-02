@@ -12,7 +12,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password_confirmation" class="text-info">Password:</label><br>
-                                <input type="password_confirmation" name="password_confirmation" id="password_confirmation" class="form-control">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                             </div>
                             <input type="hidden" name="token" id="token" class="form-control" value={{$token}}>
                             <div class="form-group">

@@ -8,8 +8,17 @@
 
 
         
-          <li class="nav-item active">
+          <li class="nav-item ">
         <a class="nav-link" href="/profile">Profiel <span class="sr-only"></span></a>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SpellenForum
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/spellenForum">SpellenForum watch</a>
+          <a class="dropdown-item" href="/spellenForum/create">create spel <span class="sr-only"></span></a>
+          
       </li>
      
    <li class="nav-item">
@@ -18,9 +27,14 @@
 
        <li class="nav-item">
         <a class="nav-link" href="/contactUs">Contact us</a>
-      </li>
-     <li class="nav-item">
-        <a class="nav-link" href="/logout">Log out</a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile">Watch profiel <span class="sr-only"></span></a>
+          <a class="dropdown-item" href="/logout">loguit</a>
+          
       </li>
        <li class="nav-item">
         <a class="nav-link" href="/aboutMe">aboutMe</a>

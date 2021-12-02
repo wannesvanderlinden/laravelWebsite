@@ -9,6 +9,14 @@
 @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
    @section('content')
 
+            
+@if( $errors->has('email') || $errors->has('username') || $errors->has('birthday')||$errors->has('name')||$errors->has('password') )
+
+<div class="alert alert-danger" role="alert">
+ You let somthing open!
+</div>
+                
+             @endif
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -54,13 +62,7 @@
         @endif
                 </div>
 
-            
-@if($errors !== null)
-
-                        <div class="error">
-            You let somthing open!
-             @endif
-                    </div>
+                  
             
 
 

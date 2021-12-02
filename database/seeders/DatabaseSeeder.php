@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorieSeeder::class);
         $this->call(ContactSeeder::class);
         $this->call(QuestionSeeder::class);
+  $this->call(LeeftijdsgroepSeeder::class);
+                 $this->call(SpelSeeder::class);
+
+             $this->call(Leeftijd_spelSeeder::class);
+            
     }
 }

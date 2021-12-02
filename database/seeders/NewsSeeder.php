@@ -20,7 +20,7 @@ class NewsSeeder extends Seeder
             'id'=>1,
              'title' => 'Buitenspeeldag',
             'content' => 'Op woensdagnamiddag 21 april roepen we je op om buiten te gaan ravotten tijdens de 14de Buitenspeeldag.',
-            'img' => '11232021121824619cdc10a166a.jpg',
+            'img' => 'buitenspeeldag.jpg',
                 'created_at'=>date("Y/m/d"),
                 'updated_at'=>date("Y/m/d"),
                 

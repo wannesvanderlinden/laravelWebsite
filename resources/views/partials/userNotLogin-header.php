@@ -10,7 +10,7 @@
       
    
     
-        <li class="nav-item active">
+        <li class="nav-item s">
         <a class="nav-link" href="/login">Login <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">

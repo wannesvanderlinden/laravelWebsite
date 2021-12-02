@@ -6,33 +6,60 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          News
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/news/editNews">edit news <span class="sr-only"></span></a>
+          <a class="dropdown-item" href="/news/newsCreator">create news item <span class="sr-only"></span></a>
+          
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          FAQ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/FAQ/edit">edit FAQ <span class="sr-only"></span></a>
+      </li>
 
-      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tools
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="/admin/inbox">Inbox Contact</a>
+          <a class="dropdown-item" href="/user/promote">Promote user</a>
+          
+   
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SpellenForum
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/spellenForum">SpellenForum watch</a>
+          <a class="dropdown-item" href="/spellenForum/create">create spel <span class="sr-only"></span></a>
+          
+      </li>
      
-          <li class="nav-item active">
-        <a class="nav-link" href="/news/editNews">edit news <span class="sr-only"></span></a>
+     
+      
+       
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile">Watch profiel <span class="sr-only"></span></a>
+          <a class="dropdown-item" href="/logout">loguit</a>
+          
       </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="/news/newsCreator">create news item <span class="sr-only"></span></a>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="/FAQ/edit">edit FAQ <span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/user/promote">Promote user</a>
-      </li>
-       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/inbox">Inbox Contact</a>
-      </li>
+     
       <li class="nav-item">
         <a class="nav-link" href="/aboutMe">aboutMe</a>
       </li>
-   
-    <li class="nav-item">
-        <a class="nav-link" href="/logout">loguit</a>
-      </li>
     
+
       
     </ul>
   </div>

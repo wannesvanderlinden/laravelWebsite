@@ -9,6 +9,8 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReactionController;
+use App\Http\Controllers\SpelController;
+
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Str;
@@ -189,8 +191,15 @@ Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middl
 //admin inbox
 Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth');
 
-//admin inbox
+//about me
 Route::get('/aboutMe',function () {
     return view('aboutMe.aboutMe');});
 
+//spellen forum
+
+Route::get('/spellenForum',[SpelController::class,'index'])->middleware('auth');
+
+Route::get('/spellenForum/create',[SpelController::class,'creator'])->middleware('auth');
+
+Route::post('/spellenForum/create',[SpelController::class,'create'])->middleware('auth');
 
