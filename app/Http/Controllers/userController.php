@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\reaction;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,11 +71,14 @@ use Illuminate\Support\Facades\Auth;
      public function saveChanges(Request $request){
        
       $user= User::find(Auth::user()->id);
+   
+      
      $user->name = $request->input('name');
         $user->username = $request->input('username');
        $user->birthday =  $request->input('birthday');
            $user->aboutMe =  $request->input('aboutMe');
            $user->save();
+          reaction::where('user_id','=',$user->id)->update(['name'=>$user->username]);
     return  redirect()->intended('/profile')->with('success', 'Account is been updated');
 
     }

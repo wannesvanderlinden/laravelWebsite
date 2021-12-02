@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\reaction;
 use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
@@ -85,7 +86,8 @@ public function save(Request $request){
     }
 
        public function delete(News $news){
-    News::find($news->id)->delete();
+          reaction::where('news_id','=',$news->id)->delete();
+          News::find($news->id)->delete();
        return redirect('/news/editNews')->with('success', 'News has been deleted');
     
 
