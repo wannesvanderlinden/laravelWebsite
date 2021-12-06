@@ -80,6 +80,11 @@ class CategorieController extends Controller
      */
     public function update(Request $request, categorie $categorie)
     {
+         $this->validate($request, [
+            'name' => 'required',
+            'summary' => 'required',
+            
+         ]);
         $categorie->update([
             'name'=> request('name'),
             'summary'=>request('summary'),
@@ -102,13 +107,25 @@ class CategorieController extends Controller
 
     }
 
-    public function get(Request $request){
+    public function getEdit(Request $request){
 
       $categories= categorie::all();
     
     return view('faqEdit', ['categories' => $categories]);
 
     }
+    
+    public function get(Request $request){
+     return view('faqEdit');
+    
+
+    }
+      public function getCreator(Request $request){
+       return view('categorieCreate');
+    
+
+    }
+
 
    
 }

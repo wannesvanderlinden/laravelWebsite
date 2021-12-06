@@ -14,6 +14,7 @@ class CreateSpelsTable extends Migration
     public function up()
     {
         Schema::create('spels', function (Blueprint $table) {
+            
             $table->id();
             $table->string('title');
              $table->longText('explenation');
@@ -28,6 +29,7 @@ class CreateSpelsTable extends Migration
      */
     public function down()
     {
+         Schema::dropIfExists('leeftijdsgroep_spel');
         Schema::dropIfExists('spels');
     }
 }

@@ -38,5 +38,12 @@ use App\Http\Controllers\Auth;
     return view('adminInboxContact', ['forms' => $forms]);
 
     }
+        
+ public function getContactField(Request $request){
+
+
+    return view('contact');
+
+    }
     
 }

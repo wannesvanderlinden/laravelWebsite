@@ -30,6 +30,7 @@ class LeeftijdSpel extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('leeftijd_spels');
+        
+         Schema::dropIfExists('leeftijdsgroep_spel');
     }
 }

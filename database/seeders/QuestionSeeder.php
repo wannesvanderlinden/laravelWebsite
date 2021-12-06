@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\questions;
 
 class QuestionSeeder extends Seeder
 {
@@ -16,15 +17,13 @@ class QuestionSeeder extends Seeder
     public function run()
     {
        
-        DB::table('questions')->insert([
-            'id'=>1,
-             'title' => 'Can I have admin priveleges?',
-            'answer' => 'Only when a admin promote you.',
-            'categorie_id' => '1',
-                'created_at'=>date("Y/m/d"),
-                'updated_at'=>date("Y/m/d"),
-                
-                
-        ]);
+     
+         $question =new questions;
+          $question->id=1;
+        $question->title = 'Can I have admin priveleges?';
+        $question->answer = 'Only when a admin promote you.';
+        $question->categorie_id = '1';
+        
+        $question->save();
     }
 }

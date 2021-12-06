@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\News;
 use App\Models\reaction;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
+
 
  class userController extends Controller
 {
@@ -31,7 +34,8 @@ use Illuminate\Support\Facades\Auth;
     public function get(Request $request){
 
       $users= User::all();
-    return view('welcome', ['users' => $users]);
+        $news= News::all();
+    return view('welcome', ['users' => $users], ['news' => $news]);
 
     }
 
@@ -48,6 +52,27 @@ use Illuminate\Support\Facades\Auth;
     return view('otherUserProfile', ['user' => $user]);
 
     }
+
+     public function profile(User $user){
+
+     
+    return view('profile');
+
+    }
+       public function getProfileEdit(User $user){
+
+     
+    return view('profileEdit');
+
+    }
+
+        public function getAboutMe(User $user){
+
+     
+    return view('aboutMe.aboutMe');
+
+    }
+
     public function promote(User $user){
     
        
@@ -71,7 +96,12 @@ use Illuminate\Support\Facades\Auth;
      public function saveChanges(Request $request){
        
       $user= User::find(Auth::user()->id);
-   
+    $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required',
+            'birthday' => 'required',
+            'aboutMe' => 'required'
+         ]);
       
      $user->name = $request->input('name');
         $user->username = $request->input('username');

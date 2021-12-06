@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\categorie;
 
 class CategorieSeeder extends Seeder
 {
@@ -16,15 +17,11 @@ class CategorieSeeder extends Seeder
     public function run()
     {
        
-        DB::table('categories')->insert([
-            'id'=>1,
-             'name' => 'Profile',
-            'summary' => 'This is about profiles and what you can do with it',
-            
-                'created_at'=>date("Y/m/d"),
-                'updated_at'=>date("Y/m/d"),
-                
-                
-        ]);
+       
+         $categorie =new categorie;
+          $categorie->id=1;
+        $categorie->name = 'Profile';
+        $categorie->summary = 'This is about profiles and what you can do with it';
+        $categorie->save();
     }
 }

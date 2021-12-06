@@ -21,4 +21,17 @@
               </div>
             </div>
 </form>
+@if( $errors->has('email') )
+
+<div class="alert alert-danger" role="alert">
+ Email is not in database
+</div>
+                
+             @endif
+                       @if(Session::has('status'))
+            <div class="alert alert-success">
+                {{Session::get('status')}}
+            </div>
+        @endif
+             
    @endsection

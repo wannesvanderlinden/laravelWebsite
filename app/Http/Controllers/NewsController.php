@@ -36,6 +36,11 @@ public function save(Request $request){
     }
     public function update(Request $request,News $news){
 
+    $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            
+         ]);
     
         $news->update([
             'title'=> request('title'),
@@ -70,7 +75,12 @@ public function save(Request $request){
     return view('welcome', ['news' => $news]);
 
     }
-    
+     public function getEdit(Request $request){
+
+     
+    return view('editNews');
+
+    }
     public function show(Request $request){
 
       $news= News::all();
@@ -91,6 +101,12 @@ public function save(Request $request){
           Storage::delete("public/news/$news->img");
        return redirect('/news/editNews')->with('success', 'News has been deleted');
     
+
+    }
+
+      public function getNewsCreator(Request $request){
+
+       return view('newsCreator');
 
     }
 }

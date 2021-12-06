@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\News;
 
 class NewsSeeder extends Seeder
 {
@@ -16,15 +17,14 @@ class NewsSeeder extends Seeder
     public function run()
     {
        
-        DB::table('news')->insert([
-            'id'=>1,
-             'title' => 'Buitenspeeldag',
-            'content' => 'Op woensdagnamiddag 21 april roepen we je op om buiten te gaan ravotten tijdens de 14de Buitenspeeldag.',
-            'img' => 'buitenspeeldag.jpg',
-                'created_at'=>date("Y/m/d"),
-                'updated_at'=>date("Y/m/d"),
-                
-                
-        ]);
+    
+         $news =new News;
+      $news->id =1; 
+        $news->title ='Buitenspeeldag';
+        $news->content ='Op woensdagnamiddag 21 april roepen we je op om buiten te gaan ravotten tijdens de 14de Buitenspeeldag.';
+     
+    
+        $news->img='buitenspeeldag.jpg';
+        $news->save();
     }
 }

@@ -32,133 +32,74 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-//main
+//main reactie + news
 Route::get('/', [userController::class,'get' ])->name('index');
-Route::get('/', [NewsController::class,'get' ]);
-
-Route::post('/', [ReactionController::class,'store']);
+Route::post('/', [ReactionController::class,'store'])->name('reaction.store');
 
 //login
-Route::get('/login',function () {
-    return view('login');
-} )->middleware('guest')->name('login');
-
-Route::post('/login',[LoginController::class,'authenticate'] )->middleware('guest')->name('login');
+Route::get('/login',[LoginController::class,'get'] )->middleware('guest')->name('login.get');
+Route::post('/login',[LoginController::class,'authenticate'] )->middleware('guest')->name('login.auth');
 
 //forgot password
-Route::get('/forgot-password', function () {
-    return view('forgot-password');
-})->middleware('guest')->name('password.request');
+Route::get('/forgot-password', [LoginController::class,'getPasswordReset'])->middleware('guest')->name('password.request');
 
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
+Route::post('/forgot-password',[LoginController::class,'sendPasswordReset'])->middleware('guest')->name('password.email');
 
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
+Route::get('/reset-password/{token}', [LoginController::class,'getResetWithToken'])->middleware('guest')->name('password.reset');
 
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-
-Route::get('/reset-password/{token}', function ($token) {
-    return view('resetPassword', ['token' => $token]);
-})->middleware('guest')->name('password.reset');
-
-Route::post('/reset-password/{token}', function (Request $request) {
-    $request->validate([
-        'token' => 'required',
-        'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
-    ]);
-
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function ($user, $password) {
-            $user->forceFill([
-                'password' => Hash::make($password)
-            ])->setRememberToken(Str::random(60));
-
-            $user->save();
-
-            event(new PasswordReset($user));
-        }
-    );
-
-    return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
-})->middleware('guest')->name('password.update');
+Route::post('/reset-password/{token}', [LoginController::class,'resetPasswordSave'])->middleware('guest')->name('password.update');
 
 
 //regristation
-Route::get('/regristation', function () {
-    return view('regristation');
-})->middleware('guest')->name('regristation');
+Route::get('/regristation', [LoginController::class,'getRegristration'] )->middleware('guest')->name('regristation');
 
 //regristration save
-Route::post('/regristation',[userController::class,'save'])->middleware('guest')->name('regristation');
+Route::post('/regristation',[userController::class,'save'])->middleware('guest')->name('save.regristation');
 
 //contact formulier
-Route::get('/contactUs', function () {
-    return view('contact');
-})->name('contactUs');
+Route::get('/contactUs', [ContactController::class,'getContactField'])->name('contactUs');
 
 Route::post('/contactUs',[ContactController::class,'save'])->name('save.contact');
 
 
 //FAQ for user and guest
-Route::get('/FAQ',[CategorieController::class,'show' ]);
-Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser']);
+Route::get('/FAQ',[CategorieController::class,'show'])->name('show.categories');
+Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser'])->name('show.questionsOfCategories');
 
 //News edit admin
-Route::get('/news/editNews',function () {
-    return view('editNews');
-} )->name('NewsDashboard');
-Route::get('/news/editNews', [NewsController::class,'show'])->middleware('admin');
+Route::get('/news/editNews', [NewsController::class,'getEdit'] )->middleware('admin')->name('NewsDashboard');
+Route::get('/news/editNews', [NewsController::class,'show'])->middleware('admin')->name('show.news');
 
 //profile for user 
-Route::get('/profile',function () {
-   
-    return view('profile');
-} )->middleware('auth')->name('profile');
+Route::get('/profile',[userController::class,'profile'] )->middleware('auth')->name('profile');
 
 //edit profile
-Route::get('/profile/edit',function () {
-    return view('profileEdit');
-} )->middleware('auth')->name('profileEdit');
+Route::get('/profile/edit',[userController::class,'getProfileEdit'] )->middleware('auth')->name('profileEdit');
 
-Route::post('/profile/edit', [userController::class,'saveChanges'])->name('save.profileEdit');
+Route::post('/profile/edit', [userController::class,'saveChanges'])->middleware('auth')->name('save.profileEdit');
 
 //Log uit
 Route::get('/logout',[LoginController::class,'logout' ])->middleware('auth')->name('loguit');
 
 //admin news creator
-Route::get('/news/newsCreator',function () {
-    return view('newsCreator');
-} )->middleware('admin')->name('newsCreator');
+Route::get('/news/newsCreator',[NewsController::class,'getNewsCreator'] )->middleware('admin')->name('newsCreator');
 
 Route::post('/news/newsCreator', [NewsController::class,'save'])->middleware('admin')->name('save.newsCreator');
 
 //admin faq edit dashboard
-Route::get('/FAQ/edit',function () {
-    return view('faqEdit');
-});
+Route::get('/FAQ/edit',[CategorieController::class,'get' ])->name('getEditPage');
 
 //admin edit categories
-Route::get('/FAQ/edit',[CategorieController::class,'get' ])->middleware('admin');
+Route::get('/FAQ/edit',[CategorieController::class,'getEdit' ])->middleware('admin')->name('categorie.getEdit');
 Route::get('/FAQ/categorie/{categorie}/edit',[CategorieController::class,'edit' ])->middleware('admin')->name('categorie.edit');
-Route::put('/FAQ/categorie/{categorie}',[CategorieController::class,'update' ])->middleware('admin');
+Route::put('/FAQ/categorie/{categorie}',[CategorieController::class,'update' ])->middleware('admin')->name('categorie.update');
 
 //admin create categories
-Route::get('/FAQ/categorie/create',function () {
-    return view('categorieCreate');
-});
-Route::post('/FAQ/categorie/create',[CategorieController::class,'store' ])->middleware('admin');
+Route::get('/FAQ/categorie/create',[CategorieController::class,'getCreator' ]);
+Route::post('/FAQ/categorie/create',[CategorieController::class,'store' ])->middleware('admin')->name('categorie.create');
 
 //admin delete categories + questions of that categorie
-Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'destroy' ])->middleware('admin');
+Route::get('/FAQ/categorie/{categorie}/delete',[CategorieController::class,'destroy' ])->middleware('admin')->name('categorie.delete');
 
 
 //admin edit questions of post and update them
@@ -166,40 +107,38 @@ Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::cla
 
 
 Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->middleware('admin')->name('questions.edit');
-Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy'])->middleware('admin');
-Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ])->middleware('admin');
+Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy'])->middleware('admin')->name('questions.delete');
+Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ])->middleware('admin')->name('questions.update');
 
-Route::get('/FAQ/question/add',[QuestionsController::class,'create'])->middleware('admin');
-Route::put('/FAQ/question/add',[QuestionsController::class,'store'])->middleware('admin');
+Route::get('/FAQ/question/add',[QuestionsController::class,'create'])->middleware('admin')->name('questions.create');
+Route::put('/FAQ/question/add',[QuestionsController::class,'store'])->middleware('admin')->name('questions.store');
 
-Route::get('/user/promote',[userController::class,'show'])->middleware('admin');
-Route::get('/user/promote/{user}',[userController::class,'promote'])->middleware('admin');
+Route::get('/user/promote',[userController::class,'show'])->middleware('admin')->name('admin.show');
+Route::get('/user/promote/{user}',[userController::class,'promote'])->middleware('admin')->name('admin.promote');
 
 
-Route::get('/user/demote/{user}',[userController::class,'demote'])->middleware('admin');
+Route::get('/user/demote/{user}',[userController::class,'demote'])->middleware('admin')->name('admin.demote');
 //news edit
-Route::get('/news/{news}/edit',[NewsController::class,'edit'])->middleware('admin');
-Route::post('/news/{news}/edit',[NewsController::class,'update'])->middleware('admin');
+Route::get('/news/{news}/edit',[NewsController::class,'edit'])->middleware('admin')->name('newsItem.edit');
+Route::post('/news/{news}/edit',[NewsController::class,'update'])->middleware('admin')->name('newsItem.update');
 
-Route::get('/news/{news}/delete',[NewsController::class,'delete'])->middleware('admin');
-
-//admin inbox
-Route::get('/admin/inbox',[ContactController::class,'show'])->middleware('admin');
-Route::get('/admin/{contact}/reply',[ContactController::class,'get'])->middleware('admin');
-Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middleware('admin');
+Route::get('/news/{news}/delete',[NewsController::class,'delete'])->middleware('admin')->name('newsItem.delete');
 
 //admin inbox
-Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth');
+Route::get('/admin/inbox',[ContactController::class,'show'])->middleware('admin')->name('admin.showInbox');
+Route::get('/admin/{contact}/reply',[ContactController::class,'get'])->middleware('admin')->name('admin.emailShow');
+Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middleware('admin')->name('admin.emailSave');
+
+//admin inbox
+Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth')->name('profile.show');
 
 //about me
-Route::get('/aboutMe',function () {
-    return view('aboutMe.aboutMe');});
+Route::get('/aboutMe',[userController::class,'sgetAboutMe'])->name('aboutMe.get');
 
 //spellen forum
+Route::get('/spellenForum',[SpelController::class,'index'])->middleware('auth')->name('spellenforum.show');
 
-Route::get('/spellenForum',[SpelController::class,'index'])->middleware('auth');
+Route::get('/spellenForum/create',[SpelController::class,'creator'])->middleware('auth')->name('spellenforum.creator');
 
-Route::get('/spellenForum/create',[SpelController::class,'creator'])->middleware('auth');
-
-Route::post('/spellenForum/create',[SpelController::class,'create'])->middleware('auth');
+Route::post('/spellenForum/create',[SpelController::class,'create'])->middleware('auth')->name('spellenforum.store');
 

@@ -14,6 +14,7 @@ class CreateLeeftijdsgroepsTable extends Migration
     public function up()
     {
         Schema::create('leeftijdsgroeps', function (Blueprint $table) {
+          
             $table->id();
              $table->string("name");
             
@@ -27,6 +28,7 @@ class CreateLeeftijdsgroepsTable extends Migration
      */
     public function down()
     {
+    Schema::dropIfExists('leeftijdsgroep_spel');
         Schema::dropIfExists('leeftijdsgroeps');
     }
 }

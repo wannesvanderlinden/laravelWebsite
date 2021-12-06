@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Contact;
 
 class ContactSeeder extends Seeder
 {
@@ -16,16 +17,14 @@ class ContactSeeder extends Seeder
     public function run()
     {
        
-        DB::table('contacts')->insert([
-            'id'=>1,
-             'name' => 'Wannes',
-            'email' => 'wannestest@gmail.com',
-            'message' => 'Is this site trustable and can I get admin privelege',
-                'created_at'=>date("Y/m/d"),
-                'updated_at'=>date("Y/m/d"),
-                 'isReply'=>false,
-                
-                
-        ]);
+     
+         $contact =new Contact;
+         $contact->id = 1;
+        $contact->name = 'Wannes';
+        $contact->email = 'wannestest@gmail.com';
+        $contact->message = 'Is this site trustable and can I get admin privelege';
+        $contact->isReply=false;
+        
+        $contact->save();
     }
 }

@@ -94,6 +94,11 @@ class QuestionsController extends Controller
      */
     public function update(Request $request, questions $questions)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'answer' => 'required',
+            'categories' => 'required'
+         ]);
         $questions->update([
             'title'=> request('title'),
             'answer'=>request('answer'),
