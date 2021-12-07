@@ -6,10 +6,6 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
 
-
-      
-   
-    
         <li class="nav-item s">
         <a class="nav-link" href="/login">Login <span class="sr-only"></span></a>
       </li>

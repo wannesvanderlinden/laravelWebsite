@@ -1,12 +1,12 @@
 @component('mail::message')
-# {{ $mailData['title'] }}
+    # {{ $mailData['title'] }}
 
-@component('mail::message')
-{{$mailData['content']}}
+    @component('mail::message')
+        {{ $mailData['content'] }}
 
 
-@endcomponent
+    @endcomponent
 
-Thanks,<br>
-{{ $mailData['name'] }}
+    Thanks,<br>
+    {{ $mailData['name'] }}
 @endcomponent
