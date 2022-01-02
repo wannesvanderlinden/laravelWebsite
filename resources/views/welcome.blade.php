@@ -14,7 +14,7 @@
 
     @foreach ($news as $new)
         <br>
-        <div class="card" style="border:5px solid black;">
+        <div class="card " style=" width:100%; margin:auto;">
 
             @csrf
             <div class="card" style="width: 100%; height:5%;">
@@ -25,22 +25,7 @@
                     <p class="card-text">{{ $new->content }}</p>
                     <p class="card-text"><small class="text-muted">Created at:{{ $new->created_at }} </small></p>
 
-                    @foreach ($new->reactions as $reaction)
-                        <br>
-                        <div class="card">
-                            <div class="card-header">
-                                Reaction: <a class="nav-link"
-                                    href="/profile/user/{{ $reaction->user_id }}">{{ $reaction->name }}</a>
-                            </div>
-                            <div class="card-body">
-                                <blockquote class="blockquote mb-0">
-                                    <p>{{ $reaction->content }}</p>
-                                    <footer class="blockquote-footer">{{ $reaction->created_at }}</footer>
-                                </blockquote>
-                            </div>
-                        </div>
 
-                    @endforeach
                     @if (Auth::user() !== null)
                         <form action="" method="post">
                             @csrf
@@ -49,6 +34,24 @@
                             <button type="submit">post</button>
                             <input type="hidden" id="news_id" name="news_id" value="{{ $new->id }}">
                 </div>
+                @foreach ($new->reactions as $reaction)
+
+                    <br>
+                    <div class="card">
+                        <div class="card-header">
+                            Reaction: <a class="nav-link"
+                                href="/profile/user/{{ $reaction->user_id }}">{{ $reaction->name }}</a>
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{ $reaction->content }}</p>
+                                <footer class="blockquote-footer">{{ $reaction->created_at }}</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                @endforeach
+
                 @if ($errors->has('reaction'))
                     <div class="alert alert-danger" role="alert">
                         {{ $errors->first('reaction') }}

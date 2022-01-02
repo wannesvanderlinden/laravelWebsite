@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
         $user->birthday =  date("Y/m/d");
         $user->aboutMe =  "none";
         $user->admin = true;
+        $user->img="profile.jpg";
         $user->save();
     }
 }

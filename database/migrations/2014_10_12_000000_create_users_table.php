@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->string('aboutMe');
             $table->boolean('admin');
+             $table->string('img');
             $table->timestamps();
             $table->rememberToken();
         });

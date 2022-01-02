@@ -19,7 +19,7 @@
         <a class="nav-link" href="/contactUs">Contact us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/aboutMe">aboutMe</a>
+        <a class="nav-link" href="/aboutMe">AboutMe</a>
       </li>
     </ul>
   </div>

@@ -133,7 +133,7 @@ Route::post('/admin/{contact}/reply',[MailController::class,'sendEmail'])->middl
 Route::get('/profile/user/{user}',[userController::class,'showProfile'])->middleware('auth')->name('profile.show');
 
 //about me
-Route::get('/aboutMe',[userController::class,'sgetAboutMe'])->name('aboutMe.get');
+Route::get('/aboutMe',[userController::class,'getAboutMe'])->name('aboutMe.get');
 
 //spellen forum
 Route::get('/spellenForum',[SpelController::class,'index'])->middleware('auth')->name('spellenforum.show');

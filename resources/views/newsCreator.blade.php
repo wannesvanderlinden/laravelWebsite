@@ -1,6 +1,7 @@
 @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 @section('content')
-    <form action="" method="post" enctype="multipart/form-data">
+    <br>
+    <form action="" method="post" enctype="multipart/form-data" class="shadow-lg p-3 mb-5 bg-body rounded">
         <div class="form-group">
             <label for="content">Title</label>
             <textarea class="form-control" id="title" rows="1" width="5" name="title"></textarea>

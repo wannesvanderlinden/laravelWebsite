@@ -7,7 +7,10 @@
     @endif
     <fieldset disabled>
         <legend>Profile</legend>
-        <img src="{{ asset('storage/profile/profile.jpg') }}" class="img-thumbnail" alt="..." width="240px" height="240px">
+
+
+        <img src="{{ asset('storage/profile/' . Auth::user()->img) }}" class="img-thumbnail" alt="..." width="240px"
+            height="240px">
         <div class="mb-3">
             <label for="disabledTextInput" class="form-label">username:</label>
             <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ Auth::user()->username }}">
@@ -31,6 +34,7 @@
             <label for="disabledTextInput" class="form-label">aboutMe:</label>
             <textarea name="aboutMe" id="aboutMe" cols="30" rows="10" disabled>{{ Auth::user()->aboutMe }}   </textarea>
         </div>
+
 
     </fieldset>
     <div class="mb-3">

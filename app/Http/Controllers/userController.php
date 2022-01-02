@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Auth;
         $user->birthday =  $request->input('birthday');
         $user->aboutMe =  "none";
         $user->admin = false;
+        $user->img="profile.jpg";
         $user->save();
        return back()->with('success', 'Account is succesfully registerd');
 
@@ -107,7 +108,29 @@ use Illuminate\Support\Facades\Auth;
         $user->username = $request->input('username');
        $user->birthday =  $request->input('birthday');
            $user->aboutMe =  $request->input('aboutMe');
-           $user->save();
+          $user->save();
+           if(request('photo')==null){
+               
+            }
+            else if ($user->img == "profile.jpg"
+            ){
+              
+         
+       $fileName = date('mdYHis') .uniqid(). '.' . $request->file('photo')->extension(); 
+        $request->file('photo')->storeAs('public/profile', $fileName);
+        
+        $user->img=$fileName;
+          $user->save();
+            }else{
+                   Storage::delete("public/profile/$user->img");
+       $fileName = date('mdYHis') .uniqid(). '.' . $request->file('photo')->extension(); 
+        $request->file('photo')->storeAs('public/profile', $fileName);
+       
+          $user->img=$fileName;
+          $user->save();
+            }
+          
+            
           reaction::where('user_id','=',$user->id)->update(['name'=>$user->username]);
     return  redirect()->intended('/profile')->with('success', 'Account is been updated');
 
