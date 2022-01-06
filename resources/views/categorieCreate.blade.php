@@ -1,9 +1,21 @@
 @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 @section('content')
+    <br>
+    <div class="card text-center">
 
+        <div class="card-body">
+            <h5 class="card-title">
+                <legend>Create Categorie</legend>
+            </h5>
+            <p class="card-text">Down here you can create a categorie</p>
+
+        </div>
+
+    </div>
+    <br>
     <form action="" method="post">
 
-        <legend>Create Categorie</legend>
+
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" id="name" name="name" class="form-control" value="">

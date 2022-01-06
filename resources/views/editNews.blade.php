@@ -1,6 +1,17 @@
 @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 
 @section('content')
+    <br>
+    <div class="card text-center">
+
+        <div class="card-body">
+            <h5 class="card-title">News manager</h5>
+            <p class="card-text">Down here you can see the news items and can delete and edit them</p>
+
+        </div>
+
+    </div>
+    <br>
     <div class="row">
         @foreach ($news as $new)
 

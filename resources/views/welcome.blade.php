@@ -1,7 +1,7 @@
 @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 
 @section('content')
-
+    <br>
     <div class="card text-center">
 
         <div class="card-body">
@@ -11,19 +11,23 @@
         </div>
 
     </div>
+    <br>
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style=" width:100%; display: flex;
+                                                      ">
+        @foreach ($news as $new)
 
-    @foreach ($news as $new)
-        <br>
-        <div class="card " style=" width:100%; margin:auto;">
+
 
             @csrf
-            <div class="card" style="width: 100%; height:5%;">
+            <div class="card  shadow-lg p-3 mb-5 bg-body rounded"
+                style="width: 50%; height:5%; margin-right:auto; margin-left:auto; ">
                 <img class="card-img-top" src="{{ asset('storage/news/' . $new->img) }}" alt="Card image cap"
                     style=" height:400px; ">
                 <div class="card-body">
                     <h5 class="card-title">{{ $new->title }}</h5>
                     <p class="card-text">{{ $new->content }}</p>
-                    <p class="card-text"><small class="text-muted">Created at:{{ $new->created_at }} </small></p>
+                    <p class="card-text"><small class="text-muted">Created at:{{ $new->created_at }}
+                        </small></p>
 
 
                     @if (Auth::user() !== null)
@@ -34,10 +38,11 @@
                             <button type="submit">post</button>
                             <input type="hidden" id="news_id" name="news_id" value="{{ $new->id }}">
                 </div>
+                <hr>
                 @foreach ($new->reactions as $reaction)
 
                     <br>
-                    <div class="card">
+                    <div class="card" style="width: 100%;">
                         <div class="card-header">
                             Reaction: <a class="nav-link"
                                 href="/profile/user/{{ $reaction->user_id }}">{{ $reaction->name }}</a>
@@ -52,18 +57,21 @@
 
                 @endforeach
 
+
                 @if ($errors->has('reaction'))
                     <div class="alert alert-danger" role="alert">
                         {{ $errors->first('reaction') }}
                     </div>
+
                 @endif
+
             </div>
             </form>
-    @endif
+        @endif
 
-    <br>
+        <br>
 
-    @endforeach
+        @endforeach
     </div>
     <br>
 @endsection

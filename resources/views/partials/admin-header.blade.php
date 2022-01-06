@@ -13,8 +13,8 @@
                     News
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/news/editNews">edit news <span class="sr-only"></span></a>
-                    <a class="dropdown-item" href="/news/newsCreator">create news item <span
+                    <a class="dropdown-item" href="/news/editNews">News Manager <span class="sr-only"></span></a>
+                    <a class="dropdown-item" href="/news/newsCreator">Create news item <span
                             class="sr-only"></span></a>
 
             </li>
@@ -24,7 +24,9 @@
                     FAQ
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/FAQ/edit">edit FAQ <span class="sr-only"></span></a>
+                    <a class="dropdown-item" href="/FAQ/edit">Edit FAQ <span class="sr-only"></span></a>
+                    <a class="dropdown-item" href="/FAQ/categorie/create">Create categorie <span
+                            class="sr-only"></span></a>
             </li>
 
             <li class="nav-item dropdown">
