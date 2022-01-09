@@ -96,9 +96,15 @@ public function save(Request $request){
     }
 
        public function delete(News $news){
-          reaction::where('news_id','=',$news->id)->delete();
+          reaction::where('news_id','=',$news->id)->delete();  
+           $new= News::find($news->id)->get();
+         
+             Storage::delete("public/news/$news->img"); 
+         
+      
           News::find($news->id)->delete();
-          Storage::delete("public/news/$news->img");
+          
+         
        return redirect('/news/editNews')->with('success', 'News has been deleted');
     
 
