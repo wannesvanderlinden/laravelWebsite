@@ -15,6 +15,17 @@
     @extends(Auth::user() !==null? (Auth::user()->admin ==1 ? 'layouts.admin' : 'layouts.user'):'layouts.user')
 
     @section('content')
+        <br>
+        <div class="card text-center">
+
+            <div class="card-body">
+                <h5 class="card-title">Contact us</h5>
+                <p class="card-text">Contact us for any qoustions</p>
+
+            </div>
+
+        </div>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">

@@ -29,20 +29,20 @@ use App\Http\Controllers\Auth;
     public function get(Contact $contact){
        
 
-    return view('adminReplyContact', ['contact' => $contact]);
+    return view('adminInbox.adminReplyContact', ['contact' => $contact]);
 
     }
     public function show(Request $request){
 
       $forms= Contact::all();
-    return view('adminInboxContact', ['forms' => $forms]);
+    return view('adminInbox.adminInboxContact', ['forms' => $forms]);
 
     }
         
  public function getContactField(Request $request){
 
 
-    return view('contact');
+    return view('userContact.contact');
 
     }
     

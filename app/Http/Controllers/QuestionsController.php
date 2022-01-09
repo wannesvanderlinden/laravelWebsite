@@ -26,7 +26,7 @@ class QuestionsController extends Controller
     public function create()
     {
         $categories = categorie::all();
-        return view('questionAdd',['categories' => $categories]);
+        return view('adminInbox.questionAdd',['categories' => $categories]);
     }
 
     /**
@@ -62,14 +62,14 @@ class QuestionsController extends Controller
          $questions = $categorie->questions;
     
 
-         return view('questionEdit',['questions' => $questions]);
+         return view('adminInbox.questionEdit',['questions' => $questions]);
     }
     public function showForUser(categorie $categorie)
     {
          $questions = $categorie->questions;
     
 
-         return view('faqQuestions',['questions' => $questions]);
+         return view('userFAQ.faqQuestions',['questions' => $questions]);
     }
 
     /**
@@ -82,7 +82,7 @@ class QuestionsController extends Controller
     {
         $categories =categorie::all();
 
-          return view('questionEditSave',['question' => $questions],['categories'=>$categories]);
+          return view('adminInbox.questionEditSave',['question' => $questions],['categories'=>$categories]);
     }
 
     /**

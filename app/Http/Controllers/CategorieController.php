@@ -57,7 +57,7 @@ class CategorieController extends Controller
     public function show(categorie $categorie)
     {
         $categories= categorie::all();
-    return view('faq', ['categories' => $categories]);
+    return view('userFAQ.faq', ['categories' => $categories]);
     }
 
     /**
@@ -68,7 +68,7 @@ class CategorieController extends Controller
      */
     public function edit(categorie $categorie)
     {
-        return view('categorieEdit',['categorie' => $categorie]);
+        return view('adminFAQ.categorieEdit',['categorie' => $categorie]);
     }
 
     /**
@@ -111,17 +111,17 @@ class CategorieController extends Controller
 
       $categories= categorie::all();
     
-    return view('faqEdit', ['categories' => $categories]);
+    return view('adminFAQ.faqEdit', ['categories' => $categories]);
 
     }
     
     public function get(Request $request){
-     return view('faqEdit');
+     return view('adminFAQ.faqEdit');
     
 
     }
       public function getCreator(Request $request){
-       return view('categorieCreate');
+       return view('adminFAQ.categorieCreate');
     
 
     }

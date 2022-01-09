@@ -72,26 +72,26 @@ public function save(Request $request){
     public function get(Request $request){
 
       $news= News::all();
-    return view('welcome', ['news' => $news]);
+    return view('welcome.welcome', ['news' => $news]);
 
     }
      public function getEdit(Request $request){
 
      
-    return view('editNews');
+    return view('adminNews.editNews');
 
     }
     public function show(Request $request){
 
       $news= News::all();
-    return view('editNews', ['news' => $news]);
+    return view('adminNews.editNews', ['news' => $news]);
 
     }
     
     public function edit(News $news){
    
       
-    return view('newsEditSave', ['new' => $news]);
+    return view('adminNews.newsEditSave', ['new' => $news]);
 
     }
 
@@ -106,7 +106,7 @@ public function save(Request $request){
 
       public function getNewsCreator(Request $request){
 
-       return view('newsCreator');
+       return view('adminNews.newsCreator');
 
     }
 }

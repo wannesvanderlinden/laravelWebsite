@@ -51,18 +51,18 @@ class LoginController extends Controller
  public function get(Request $request){
 
 
-    return view('login');
+    return view('userLogin.login');
 
     }
      public function getRegristration(Request $request){
 
 
     
-    return view('regristation');
+    return view('userLogin.regristation');
 
     }
      public function getPasswordReset(Request $request){
-return view('forgot-password');
+return view('userLogin.forgot-password');
 
     }
      public function sendPasswordReset(Request $request){
@@ -78,7 +78,7 @@ return view('forgot-password');
 
     }
      public function getResetWithToken($token) {
-    return view('resetPassword', ['token' => $token]);
+    return view('userLogin.resetPassword', ['token' => $token]);
 }
  public function resetPasswordSave(Request $request){
 

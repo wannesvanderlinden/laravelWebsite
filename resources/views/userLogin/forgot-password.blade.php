@@ -12,4 +12,16 @@
               </div>
           </div>
       </form>
+      @if ($errors->has('email'))
+          <div class="alert alert-danger" role="alert">
+              {{ $errors->first('email') }}
+          </div>
+          @if (Session::has(' status'))
+              <div class="alert alert-success">
+                  {{ Session::get(' status') }}
+              </div>
+          @endif
+
+
+      @endif
   @endsection

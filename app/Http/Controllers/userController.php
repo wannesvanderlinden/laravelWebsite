@@ -36,34 +36,34 @@ use Illuminate\Support\Facades\Auth;
 
       $users= User::all();
         $news= News::all();
-    return view('welcome', ['users' => $users], ['news' => $news]);
+    return view('welcome.welcome', ['users' => $users], ['news' => $news]);
 
     }
 
  public function show(Request $request){
 
       $users= User::all();
-    return view('adminPromote', ['users' => $users]);
+    return view('adminPromoteDemote.adminPromote', ['users' => $users]);
 
     }
 
      public function showProfile(User $user){
 
      
-    return view('otherUserProfile', ['user' => $user]);
+    return view('profile.otherUserProfile', ['user' => $user]);
 
     }
 
      public function profile(User $user){
 
      
-    return view('profile');
+    return view('profile.profile');
 
     }
        public function getProfileEdit(User $user){
 
      
-    return view('profileEdit');
+    return view('profile.profileEdit');
 
     }
 
