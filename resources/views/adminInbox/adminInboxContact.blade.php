@@ -23,4 +23,5 @@
                 @endif
             @endforeach
         </tbody>
-    @endsection
+    </table>
+@endsection
