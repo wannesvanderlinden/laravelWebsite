@@ -111,6 +111,6 @@ class SpelController extends Controller
      */
     public function destroy(Spel $spel)
     {
-        //
+        
     }
 }

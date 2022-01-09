@@ -14,7 +14,7 @@
             <label for="answer" class="form-label">answer:</label>
             <input type="text" id="answer" name="answer" class="form-control" value="">
         </div>
-        <label for="cars">Choose a categorie:</label>
+        <label for="categories">Choose a categorie:</label>
         <select name="categories" id="categories">
             @foreach ($categories as $categorie)
                 <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>

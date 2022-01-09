@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\questions;
 use App\Models\categorie;
 use Illuminate\Http\Request;
+use App\Models\posedQuestions;
 
 class QuestionsController extends Controller
 {
@@ -26,7 +27,7 @@ class QuestionsController extends Controller
     public function create()
     {
         $categories = categorie::all();
-        return view('adminInbox.questionAdd',['categories' => $categories]);
+        return view('adminFAQ.questionAdd',['categories' => $categories]);
     }
 
     /**
@@ -42,6 +43,9 @@ class QuestionsController extends Controller
             'answer' => 'required',
             'categories' => 'required'
          ]);
+         if($request->input('posedId')!== null){
+            posedQuestions::find($request->input('posedId'))->delete();
+         }
         $question =new questions;
         $question->title = $request->input('title');
         $question->answer = $request->input('answer');
@@ -50,6 +54,7 @@ class QuestionsController extends Controller
         $question->save();
        return back()->with('success', 'Account is succesfully registerd');
     }
+    
 
     /**
      * Display the specified resource.
@@ -62,7 +67,7 @@ class QuestionsController extends Controller
          $questions = $categorie->questions;
     
 
-         return view('adminInbox.questionEdit',['questions' => $questions]);
+         return view('adminFAQ.questionEdit',['questions' => $questions]);
     }
     public function showForUser(categorie $categorie)
     {
@@ -82,7 +87,7 @@ class QuestionsController extends Controller
     {
         $categories =categorie::all();
 
-          return view('adminInbox.questionEditSave',['question' => $questions],['categories'=>$categories]);
+          return view('adminFAQ.questionEditSave',['question' => $questions],['categories'=>$categories]);
     }
 
     /**

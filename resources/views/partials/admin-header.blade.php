@@ -37,6 +37,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/admin/inbox">Inbox Contact</a>
                     <a class="dropdown-item" href="/user/promote">Promote user</a>
+                    <a class="dropdown-item" href="/FAQ/question/posed/show">Manage posed questions</a>
 
 
             <li class="nav-item dropdown">

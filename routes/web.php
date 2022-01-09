@@ -10,7 +10,7 @@ use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\SpelController;
-
+use App\Http\Controllers\PosedQuestionsController;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Str;
@@ -65,6 +65,7 @@ Route::post('/contactUs',[ContactController::class,'save'])->name('save.contact'
 //FAQ for user and guest
 Route::get('/FAQ',[CategorieController::class,'show'])->name('show.categories');
 Route::get('/FAQ/{categorie}/show',[QuestionsController::class,'showForUser'])->name('show.questionsOfCategories');
+Route::post('/FAQ/{categorie}/show',[PosedQuestionsController::class,'create'])->name('show.questionsOfCategories');
 
 //News edit admin
 Route::get('/news/editNews', [NewsController::class,'getEdit'] )->middleware('admin')->name('NewsDashboard');
@@ -109,6 +110,11 @@ Route::get('/FAQ/categorie/{categorie}/edit/questions',[QuestionsController::cla
 Route::get('/FAQ/questions/{questions}/edit',[QuestionsController::class,'edit'])->middleware('admin')->name('questions.edit');
 Route::get('/FAQ/questions/{questions}/delete',[QuestionsController::class,'destroy'])->middleware('admin')->name('questions.delete');
 Route::put('/FAQ/question/{questions}/save',[QuestionsController::class,'update' ])->middleware('admin')->name('questions.update');
+Route::get('/FAQ/question/posed/show',[PosedQuestionsController::class,'index' ])->middleware('admin')->name('posed.show');
+Route::post('/FAQ/question/posed/show',[QuestionsController::class,'store' ])->middleware('admin')->name('create.pose');
+
+Route::get('/FAQ/question/posed/delete/{posedQuestion}',[PosedQuestionsController::class,'destroy' ])->middleware('admin')->name('posed.destroy');
+
 
 Route::get('/FAQ/question/add',[QuestionsController::class,'create'])->middleware('admin')->name('questions.create');
 Route::put('/FAQ/question/add',[QuestionsController::class,'store'])->middleware('admin')->name('questions.store');
