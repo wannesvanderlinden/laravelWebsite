@@ -27,4 +27,9 @@
             <button type="submit">Save</button>
         </div>
     </form>
+    @if (Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
 @endsection

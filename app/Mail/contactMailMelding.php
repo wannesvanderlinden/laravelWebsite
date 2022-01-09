@@ -31,7 +31,7 @@ class contactMailMelding extends Mailable
      */
     public function build()
     {
-        return $this->markdown('contactReply')
+        return $this->markdown('adminInbox.contactReply')
               ->with('mailData', $this->mailData);
     }
 }

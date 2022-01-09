@@ -52,7 +52,7 @@ class QuestionsController extends Controller
         $question->categorie_id = $request->input('categories');
         
         $question->save();
-       return back()->with('success', 'Account is succesfully registerd');
+       return back()->with('success', 'Question is added');
     }
     
 
@@ -124,7 +124,7 @@ class QuestionsController extends Controller
     {
          questions::find($questions->id)->delete();
     
-       return back()->with('success', 'Account is succesfully registerd');
+       return back()->with('success', 'Question deleted');
     }
 
 
