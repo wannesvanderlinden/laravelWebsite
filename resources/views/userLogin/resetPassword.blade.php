@@ -10,10 +10,25 @@
               <label for="password" class="text-info">Password:</label><br>
               <input type="password" name="password" id="password" class="form-control">
           </div>
+          @if ($errors->has('password'))
+              <div class="alert alert-danger" role="alert">
+                  {{ $errors->first('password') }}
+              </div>
+
+
+          @endif
           <div class="form-group">
               <label for="password_confirmation" class="text-info">Password:</label><br>
               <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+              @if ($errors->has('password_confirmation'))
+                  <div class="alert alert-danger" role="alert">
+                      {{ $errors->first('password_confirmation') }}
+                  </div>
+
+
+              @endif
           </div>
+
           <input type="hidden" name="token" id="token" class="form-control" value={{ $token }}>
           <div class="form-group">
               <div class="col-md-12 text-right">

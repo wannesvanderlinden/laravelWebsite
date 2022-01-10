@@ -12,11 +12,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body d-flex flex-column min-vh-100 style="  background-image: url(storage/Background/abstracte-ruimte-achtergrond-met-kleurrijke-nevel_1048-5105.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-   background-size: 100%;">
+<body d-flex flex-column min-vh-100 style="">
 
     @include('partials\admin-header')
 

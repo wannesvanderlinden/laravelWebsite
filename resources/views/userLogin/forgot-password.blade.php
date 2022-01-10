@@ -16,9 +16,10 @@
           <div class="alert alert-danger" role="alert">
               {{ $errors->first('email') }}
           </div>
-          @if (Session::has(' status'))
+
+          @if (Session::has('success'))
               <div class="alert alert-success">
-                  {{ Session::get(' status') }}
+                  {{ Session::get('success') }}
               </div>
           @endif
 

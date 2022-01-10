@@ -19,10 +19,20 @@
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" id="name" name="name" class="form-control" value="">
+            @if ($errors->has('name'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->first('name') }}
+                </div>
+            @endif
         </div>
         <div class="mb-3">
             <label for="summary" class="form-label">Summary:</label>
             <input type="text" id="summary" name="summary" class="form-control" value="">
+            @if ($errors->has('summary'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->first('summary') }}
+                </div>
+            @endif
         </div>
 
         @csrf

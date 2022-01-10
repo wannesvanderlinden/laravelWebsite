@@ -9,10 +9,20 @@
         <div class="mb-3">
             <label for="title" class="form-label">Title:</label>
             <input type="text" id="title" name="title" class="form-control" value="">
+            @if ($errors->has('title'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->first('title') }}
+                </div>
+            @endif
         </div>
         <div class="mb-3">
             <label for="answer" class="form-label">answer:</label>
             <input type="text" id="answer" name="answer" class="form-control" value="">
+            @if ($errors->has('answer'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->first('answer') }}
+                </div>
+            @endif
         </div>
         <label for="categories">Choose a categorie:</label>
         <select name="categories" id="categories">
